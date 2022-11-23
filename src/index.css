@@ -17,3 +17,8 @@ body {
   color: white;
   max-height: 100vh;
 }
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+}

@@ -1,4 +1,3 @@
-import './App.css';
 import Appbar from './components/Appbar/Appbar';
 
 export default function App() {
