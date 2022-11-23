@@ -1,0 +1,9 @@
+.appbar {
+  border-bottom: 2px solid var(--purple);
+  padding-bottom: 10px;
+}
+
+.appbar .header {
+  font-size: 28px;
+  font-weight: 500;
+}

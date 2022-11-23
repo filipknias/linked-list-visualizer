@@ -1,7 +1,10 @@
-import './App.css'
+import './App.css';
+import Appbar from './components/Appbar/Appbar';
 
 export default function App() {
   return (
-    <div></div>
+    <div className="container">
+      <Appbar />
+    </div>
   )
 }
