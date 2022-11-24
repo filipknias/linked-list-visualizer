@@ -1,4 +1,4 @@
-import Appbar from './components/Appbar/Appbar';
+import Appbar from './components/app/Appbar/Appbar';
 
 export default function App() {
   return (
