@@ -1,0 +1,16 @@
+.button {
+  background: #DA22FF;
+  background: -webkit-linear-gradient(to right, #9733EE, #DA22FF);
+  background: linear-gradient(to right, #9733EE, #DA22FF);
+  padding: 10px 20px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s ease-in;
+}
+
+.button:hover {
+  filter: opacity(0.9);
+}
