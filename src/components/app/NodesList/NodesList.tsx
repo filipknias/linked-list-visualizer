@@ -3,12 +3,12 @@ import { useLinkedList } from '../../../context/LinkedListContext';
 import Node from '../Node/Node';
 
 export default function NodesList() {
-  const { getNodes } = useLinkedList();
+  const { nodes } = useLinkedList();
 
   return (
     <div className={classes['nodes-list']}>
-      {getNodes().map((node, idx) => (
-        <Node value={node} key={idx} />
+      {nodes.map((node, idx) => (
+        <Node value={node.toString()} key={idx} />
       ))}
     </div>
   )
