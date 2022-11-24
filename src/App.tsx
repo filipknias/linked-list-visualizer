@@ -1,5 +1,7 @@
 import Appbar from './components/app/Appbar/Appbar';
 import SetNodeControl from './components/controls/SetNodeControl';
+import InsertNodeControl from './components/controls/InsertNodeControl';
+import AddNodeControl from './components/controls/AddNodeControl';
 
 export default function App() {
   return (
@@ -9,6 +11,8 @@ export default function App() {
         <h1>Linked list node</h1>
         <div className="controls-container">
           <SetNodeControl />
+          <InsertNodeControl />
+          <AddNodeControl />
         </div>
       </div>
     </div>
