@@ -1,17 +1,17 @@
 import { createContext, useContext, ReactNode, useState } from "react";
 
 interface LinekdListContext {
-  setNode: (index: number, data: string) => void;
-  insertNode: (index: number, data: string) => void;
-  addNode: (data: string) => void;
-  getNodes: () => string[];
+  setNode: (index: number, data: number) => void;
+  insertNode: (index: number, data: number) => void;
+  addNode: (data: number) => void;
+  nodes: number[];
 }
 
 const initialValue = {
-  setNode: (index: number, data: string) => {},
-  insertNode: (index: number, data: string) => {},
-  addNode: (data: string) => {},
-  getNodes: () => [],
+  setNode: () => {},
+  insertNode: () => {},
+  addNode: () => {},
+  nodes: [],
 }
 
 const LinekdListContext = createContext<LinekdListContext>(initialValue);
@@ -29,7 +29,7 @@ class LinkedListNode {
 }
 
 class LinkedList {
-  head: LinkedListNode;
+  head: LinkedListNode|null;
   length: number; 
 
   constructor(value: number) {
@@ -41,28 +41,41 @@ class LinkedList {
 
 export const LinkedListProvider = ({ children }: { children: ReactNode }) => {
   const [linkedList, setLinkedList] = useState<LinkedList>(new LinkedList(1));
+  const [nodes, setNodes] = useState<number[]>([1]);
 
-  const setNode = (index: number, data: string) => {
-
-  }
-
-  const insertNode = (index: number, data: string) => {
+  const setNode = (index: number, data: number) => {
 
   }
 
-  const addNode = (data: string) => {
-    console.log(data);
+  const insertNode = (index: number, data: number) => {
+
   }
 
-  const getNodes = () => {
-    return [linkedList.head.value.toString()];
+  const addNode = (data: number) => {
+    const newNode = new LinkedListNode(data);
+    linkedList.length++;
+
+    // If linked list is empty set new node as head
+    if (linkedList.head === null) {
+      return linkedList.head = newNode;
+    }
+
+    // Get last node and set it's next property to new node
+    let lastNode = linkedList.head;
+    while (lastNode.next !== null) {
+      lastNode = lastNode.next;
+    }
+    lastNode.next = newNode;
+
+    // Update nodes state
+    setNodes((prevNodes) => [...prevNodes, newNode.value]);
   }
 
   const value = {
     setNode,
     insertNode,
     addNode,
-    getNodes,
+    nodes,
   }
 
   return (
