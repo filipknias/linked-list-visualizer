@@ -1,0 +1,17 @@
+.node-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.node {
+  background-color: var(--purple);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 700;
+  border-radius: 50%;
+  padding: 15px 25px;
+}
