@@ -5,8 +5,11 @@ export default function App() {
   return (
     <div className="container">
       <Appbar />
-      <div style={{ width: '20%' }}>
-        <SetNodeControl />
+      <div className="main-view">
+        <h1>Linked list node</h1>
+        <div className="controls-container">
+          <SetNodeControl />
+        </div>
       </div>
     </div>
   )
