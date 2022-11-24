@@ -22,3 +22,10 @@ body {
   width: 80%;
   margin: 20px auto;
 }
+
+input[type=text],
+input[type=number] {
+  outline: none;
+  padding: 5px;
+  font-size: 18px;
+}
