@@ -48,7 +48,34 @@ export const LinkedListProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const insertNode = (index: number, data: number) => {
+    if (linkedList.head === null) {
+      // TODO: handle situation when head is null
+      return;
+    }
 
+    // Create new node and increase linked list length
+    const newNode = new LinkedListNode(data);
+    linkedList.length++;
+
+    if (index === 0) {
+      newNode.next = linkedList.head;
+      linkedList.head = newNode;
+    } else {
+      // Find node with given index
+      let lastNode = linkedList.head;
+      let currentIndex = 0;
+      while (lastNode.next !== null && currentIndex !== index - 1) {
+        lastNode = lastNode.next;
+        currentIndex++;
+      }
+      // Set new node and set it's next pointer to the next following index 
+      newNode.next = lastNode.next;
+      lastNode.next = newNode;
+    }
+
+    // Update nodes array
+    const newNodes = getNodes();
+    setNodes(newNodes);
   }
 
   const addNode = (data: number) => {
@@ -69,6 +96,16 @@ export const LinkedListProvider = ({ children }: { children: ReactNode }) => {
 
     // Update nodes state
     setNodes((prevNodes) => [...prevNodes, newNode.value]);
+  }
+
+  const getNodes = () => {
+    let lastNode = linkedList.head;
+    const newNodes = [];
+    while (lastNode !== null) {
+      newNodes.push(lastNode.value);
+      lastNode = lastNode.next;
+    }
+    return newNodes;
   }
 
   const value = {

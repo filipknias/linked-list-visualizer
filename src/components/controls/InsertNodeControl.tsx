@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import Stack from '../common/Stack/Stack';
 import Button from '../common/Button/Button';
+import { useLinkedList } from '../../context/LinkedListContext';
 
 export default function InsertNodeControl() {
   const [index, setIndex] = useState(0);
   const [data, setData] = useState('');
+  const { insertNode } = useLinkedList();
 
   return (
     <Stack>
-      <Button>Insert</Button>
+      <Button onClick={() => insertNode(index, parseInt(data))}>Insert</Button>
       <input 
         type="number" 
         placeholder="Index"
