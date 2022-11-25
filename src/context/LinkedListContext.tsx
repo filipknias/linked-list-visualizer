@@ -44,7 +44,28 @@ export const LinkedListProvider = ({ children }: { children: ReactNode }) => {
   const [nodes, setNodes] = useState<number[]>([1]);
 
   const setNode = (index: number, data: number) => {
+    if (index > linkedList.length - 1) {
+      // TODO: handle invalid index case
+      return console.log('invalid index')
+    }
 
+    if (linkedList.head === null) {
+      // TODO: handle situation when head is null
+      return;
+    }
+
+    // Find node with given index
+    let lastNode = linkedList.head;
+    let currentIndex = 0;
+    while (lastNode.next !== null && currentIndex !== index) {
+      lastNode = lastNode.next;
+      currentIndex++;
+    }
+    lastNode.value = data;
+
+    // Update nodes array
+    const newNodes = getNodes();
+    setNodes(newNodes);
   }
 
   const insertNode = (index: number, data: number) => {
@@ -95,7 +116,8 @@ export const LinkedListProvider = ({ children }: { children: ReactNode }) => {
     lastNode.next = newNode;
 
     // Update nodes state
-    setNodes((prevNodes) => [...prevNodes, newNode.value]);
+    const newNodes = getNodes();
+    setNodes(newNodes);
   }
 
   const getNodes = () => {
