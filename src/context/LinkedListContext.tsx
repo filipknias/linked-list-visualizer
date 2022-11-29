@@ -4,6 +4,7 @@ interface LinekdListContext {
   setNode: (index: number, data: number) => void;
   insertNode: (index: number, data: number) => void;
   addNode: (data: number) => void;
+  removeNode: (index: number) => void;
   nodes: number[];
 }
 
@@ -11,6 +12,7 @@ const initialValue = {
   setNode: () => {},
   insertNode: () => {},
   addNode: () => {},
+  removeNode: () => {},
   nodes: [],
 }
 
@@ -122,10 +124,38 @@ export const LinkedListProvider = ({ children }: { children: ReactNode }) => {
     return newNodes;
   }
 
+  const removeNode = (index: number) => {
+    if (linkedList.head === null) return;
+    linkedList.length--;
+
+    // Update last node next pointer
+    if (index === 0) {
+      linkedList.head = linkedList.head.next;
+    } else {
+      // Find node with given index
+      let lastNode = linkedList.head;
+      let currentIndex = 0;
+      while (lastNode.next !== null && currentIndex !== index - 1) {
+        lastNode = lastNode.next;
+        currentIndex++;
+      }
+      if (lastNode.next === null) {
+        lastNode.next = null;
+      } else {
+        lastNode.next = lastNode.next.next; 
+      }
+    } 
+
+    // Update nodes state
+    const newNodes = getNodes();
+    setNodes(newNodes);
+  }
+
   const value = {
     setNode,
     insertNode,
     addNode,
+    removeNode,
     nodes,
   }
 
