@@ -5,12 +5,13 @@ import { useLinkedList } from '../../context/LinkedListContext';
 
 export default function RemoveNodeControl() {
   const indexInputRef = useRef<HTMLInputElement|null>(null);
-  const { removeNode } = useLinkedList();
+  const { LinkedList, setNodes } = useLinkedList();
 
   const handleRemoveNode = () => {
     if (indexInputRef.current === null) return;
     const indexValue = parseInt(indexInputRef.current.value);
-    removeNode(indexValue);
+    LinkedList.removeNode(indexValue);
+    setNodes(LinkedList.nodes);
   }
 
   return (

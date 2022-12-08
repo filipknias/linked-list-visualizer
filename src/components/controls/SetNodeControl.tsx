@@ -6,11 +6,16 @@ import { useLinkedList } from '../../context/LinkedListContext';
 export default function SetNode() {
   const [index, setIndex] = useState(0);
   const [data, setData] = useState('');
-  const { setNode } = useLinkedList();
+  const { LinkedList, setNodes } = useLinkedList();
+
+  const handleSetNode = () => {
+    LinkedList.setNode(index, parseInt(data));
+    setNodes(LinkedList.nodes);
+  }
 
   return (
     <Stack>
-      <Button onClick={() => setNode(index, parseInt(data))}>Set</Button>
+      <Button onClick={handleSetNode}>Set</Button>
       <input 
         type="number" 
         placeholder="Index"
