@@ -1,7 +1,7 @@
 # Linked List Visualizer
 Linked List is a data structure that consists of a sequence of nodes, where each node is connected to the next node in the sequence by a pointer. Application allows manage nodes in the list - add, remove, insert and set nodes. 
 # Live preview
-You can checkout this app here: 
+You can checkout this app here: https://linked-list-visualizer-b30150.netlify.app
 # Tech stack
 - Typescript
 - React
