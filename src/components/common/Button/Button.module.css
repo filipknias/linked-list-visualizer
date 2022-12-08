@@ -14,3 +14,9 @@
 .button:hover {
   filter: opacity(0.9);
 }
+
+@media only screen and (max-width: 700px) {
+  .button {
+    font-size: 15px;
+  }
+}

@@ -40,9 +40,9 @@ body {
 }
 
 .controls-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
 }
 
 input[type=text],
@@ -50,4 +50,24 @@ input[type=number] {
   outline: none;
   padding: 5px;
   font-size: 18px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .controls-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .controls-container {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+  .container {
+    width: 90%;
+  }
+  input[type=text],
+  input[type=number] {
+    font-size: 15px;
+  }
 }
