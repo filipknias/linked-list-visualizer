@@ -52,6 +52,15 @@ input[type=number] {
   font-size: 18px;
 }
 
+::-webkit-scrollbar {
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+  border-radius: 20px;
+}
+
 @media only screen and (max-width: 1200px) {
   .controls-container {
     grid-template-columns: repeat(2, 1fr);

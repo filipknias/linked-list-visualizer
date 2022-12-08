@@ -2,4 +2,5 @@
   display: flex;
   gap: 15px;
   overflow-x: auto;
+  padding-bottom: 15px;
 }
