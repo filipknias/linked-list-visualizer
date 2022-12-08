@@ -24,7 +24,11 @@ export const LinkedListProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (!LinkedListInstance.current) {
-      LinkedListInstance.current = new LinkedList(initialNodeValue);
+      const newLinkedList = new LinkedList(initialNodeValue);
+      LinkedListInstance.current = newLinkedList;
+      if (newLinkedList.head !== null) {
+        setNodes([newLinkedList.head.value]);
+      }
     }
   }, []);
 
