@@ -10,8 +10,12 @@ export default function SetNode() {
 
   const handleSetNode = () => {
     if (dataInputRef.current === null || indexInputRef.current === null) return;
-    LinkedList.setNode(parseInt(indexInputRef.current.value), parseInt(dataInputRef.current.value));
-    setNodes(LinkedList.nodes);
+    const data = dataInputRef.current.value;
+    const index = indexInputRef.current.value
+    if (data.trim().length > 0 && index.trim().length > 0) {
+      LinkedList.setNode(parseInt(index), parseInt(data));
+      setNodes(LinkedList.nodes);
+    }
   }
 
   return (
@@ -22,6 +26,7 @@ export default function SetNode() {
         placeholder="Index"
         ref={indexInputRef}
         min={0}
+        defaultValue={0}
       />
       <input 
         type="text" 

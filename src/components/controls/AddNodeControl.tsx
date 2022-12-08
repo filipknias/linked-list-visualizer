@@ -9,8 +9,11 @@ export default function AddNodeControl() {
 
   const handleAddNode = () => {
     if (dataInputRef.current === null) return;
-    LinkedList.addNode(parseInt(dataInputRef.current.value));
-    setNodes(LinkedList.nodes);
+    const data = dataInputRef.current.value;
+    if (data.trim().length > 0) {
+      LinkedList.addNode(parseInt(data));
+      setNodes(LinkedList.nodes);
+    }
   }
 
   return (

@@ -9,9 +9,11 @@ export default function RemoveNodeControl() {
 
   const handleRemoveNode = () => {
     if (indexInputRef.current === null) return;
-    const indexValue = parseInt(indexInputRef.current.value);
-    LinkedList.removeNode(indexValue);
-    setNodes(LinkedList.nodes);
+    const index = indexInputRef.current.value;
+    if (index.trim().length > 0) {
+      LinkedList.removeNode(parseInt(index));
+      setNodes(LinkedList.nodes);
+    }
   }
 
   return (
@@ -22,6 +24,7 @@ export default function RemoveNodeControl() {
         placeholder="Index"
         min={0}
         ref={indexInputRef}
+        defaultValue={0}
       />
     </Stack>
   )
