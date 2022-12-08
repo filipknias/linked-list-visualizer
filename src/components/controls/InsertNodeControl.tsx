@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import Stack from '../common/Stack/Stack';
 import Button from '../common/Button/Button';
 import { useLinkedList } from '../../context/LinkedListContext';
 
 export default function InsertNodeControl() {
-  const [index, setIndex] = useState(0);
-  const [data, setData] = useState('');
+  const indexInputRef = useRef<HTMLInputElement|null>(null);
+  const dataInputRef = useRef<HTMLInputElement|null>(null);
   const { LinkedList, setNodes } = useLinkedList();
 
   const handleInsertNode = () => {
-    LinkedList.insertNode(index, parseInt(data));
+    if (dataInputRef.current === null || indexInputRef.current === null) return;
+    LinkedList.insertNode(parseInt(indexInputRef.current.value), parseInt(dataInputRef.current.value));
     setNodes(LinkedList.nodes);
   }
 
@@ -19,15 +20,13 @@ export default function InsertNodeControl() {
       <input 
         type="number" 
         placeholder="Index"
-        value={index}
-        onChange={(e) => setIndex(parseInt(e.target.value))}
+        ref={indexInputRef}
         min={0}
       />
       <input 
         type="text" 
         placeholder="Data"
-        value={data}
-        onChange={(e) => setData(e.target.value)}
+        ref={dataInputRef}
       />
     </Stack>
   )
